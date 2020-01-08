@@ -1,7 +1,8 @@
 package Colecciones;
 
 import java.util.Set;
-import java.util.HashSet;;
+import java.util.HashSet;
+import java.util.Iterator;;
 
 public class ClientesBancarios {
 
@@ -20,10 +21,27 @@ public class ClientesBancarios {
 		clientesDelBanco.add(cliente4);
 		clientesDelBanco.add(cliente5);
 		
+		/*for (Cliente cliente : clientesDelBanco) {
+			if (cliente.getNombre().equals("Ana Martín")) clientesDelBanco.remove(cliente);
+		}
+		
+	*/
+		System.out.println(clientesDelBanco.size());
+		/*Iterator<Cliente> it = clientesDelBanco.iterator();
+		while(it.hasNext()) {
+			String nombreCLiente = it.next().getNombre();
+			System.out.println(nombreCLiente); 
+		} */
+		Iterator<Cliente> it = clientesDelBanco.iterator();
+		while(it.hasNext()) {
+			String nombreCLiente = it.next().getNombre();
+			if(nombreCLiente.equals("Ana Martín")) it.remove();
+			System.out.println(nombreCLiente); 
+		}
+		
 		for (Cliente cliente : clientesDelBanco) {
 			System.out.println("Nombre: "+ cliente.getNombre() + " Cuenta: "+cliente.getnCuenta() + "Saldo: "+cliente.getSaldo());
-		}
-		System.out.println(clientesDelBanco.size());
+		} 
 	}
 
 }
