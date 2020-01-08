@@ -14,8 +14,30 @@ public class Libro {
 	public String getDatos() {
 		return "El título es: " + titulo +". El autos es: " + autor + ". Y el ISBN es: " + isbn;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + isbn;
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Libro other = (Libro) obj;
+		if (isbn != other.isbn)
+			return false;
+		return true;
+	}
+	
+	/*public boolean equals(Object obj) {
 		Libro otroLibro = (Libro)obj;
 		if(obj instanceof Libro) {
 			if (this.isbn == otroLibro.isbn) {
@@ -24,5 +46,6 @@ public class Libro {
 				return false;
 			}
 		}else return false;
-	}
+	}*/
+	
 }
