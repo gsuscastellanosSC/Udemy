@@ -18,23 +18,15 @@ public class pruebaTemporizador2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Reloj miReloj = new Reloj(3000, true);
-		miReloj.ejecutarTemporizador();
+		Reloj miReloj = new Reloj();
+		miReloj.ejecutarTemporizador(3000, true);
 		JOptionPane.showMessageDialog(null, "Pulsame");
 	}
 }
 
 class Reloj {
-	private int intervalo;
-	private boolean sonido;
-	public Reloj(int intervalo, boolean sonido) {
-		
-		this.intervalo = intervalo;
-		
-		this.sonido = sonido;
-	}
-	public void ejecutarTemporizador() {
-		class DameLaHora implements ActionListener{
+	public void ejecutarTemporizador(int intervalo, boolean sonido) {
+		Timer miTemporizador = new Timer(intervalo, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -44,10 +36,7 @@ class Reloj {
 					Toolkit.getDefaultToolkit().beep();
 				}
 			}
-			
-		}
-		 ActionListener oyente = new DameLaHora();
-		 Timer miTemporizador = new Timer(intervalo, oyente);
+		});
 		 miTemporizador.start();
 	 }
 }
